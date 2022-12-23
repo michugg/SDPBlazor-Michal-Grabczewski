@@ -1,21 +1,20 @@
 ﻿<h3>DistanceConverter</h3>
 
-
 <label for="meter" class="form-label">Meters</label>
-<input type="number" class="form-control" id="meter" placeholder="Meters..." @bind="Meters" @bind:event="oninput"/>
-@if(_inches!=null)
+<input type="number" class="form-control" id="meter" placeholder="Meters..." @bind="Meters" @bind:event="oninput" />
+
+@if (_inches != null)
 {
     <div class="mt-4">
-        <span>In @Meters m equel to @_inches inches</span>
+        <span>In @Meters m equal to @_inches inches.</span>
     </div>
 }
-
-
 
 @code {
     double? _inches = null;
     double? _meters = null;
-    [Parametr]
+
+    [Parameter]
     public double DistanceFactor { get; set; }
 
     double? Meters
@@ -27,5 +26,4 @@
             _inches = value / DistanceFactor;
         }
     }
-
 }

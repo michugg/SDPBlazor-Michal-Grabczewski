@@ -1,0 +1,32 @@
+﻿<h3>MoneyConverter</h3>
+
+<label for="mwfactor" class="form-label">Money value factor</label>
+<input type="number" step=".01" class="form-control" id="mwfactor" placeholder="@MoneyValueFactor" @bind="MoneyValueFactor" @bind:event="oninput" />
+<label for="dolar" class="form-label">Dolars</label>
+<input type="number" class="form-control" id="dolar" placeholder="Dolars..." @bind="Dolars" @bind:event="oninput" />
+
+
+@if (_zlotys != null)
+{
+        <div class="mt-4">
+            <span>In @Dolars dolars equal to @_zlotys zlotys.</span>
+        </div>
+}
+
+@code {
+    double? _dolars = null;
+    double? _zlotys = null;
+
+    [Parameter]
+    public double MoneyValueFactor { get; set; }
+
+    double? Dolars
+    {
+        get => _dolars;
+        set
+        {
+            _dolars = value;
+            _zlotys = value * MoneyValueFactor;
+        }
+    }
+}
